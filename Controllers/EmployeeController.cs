@@ -79,7 +79,7 @@ namespace MVCCRUD.Controllers
             }
             return RedirectToAction("Index");
         }
-        [HttpDelete]
+        [HttpPost]
         public async Task<IActionResult> Delete(UpdateEmployee model)
         {
             var employee = await _mydbcontext.Employees.FindAsync(model.Id);
