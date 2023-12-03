@@ -1,6 +1,5 @@
-﻿@model List<MVCCRUD.Models.Domain.Employee>
-@{
-}
+﻿@model MVCCRUD.Models.PaginationViewModel<MVCCRUD.Models.Domain.Employee>
+
 <h1>Employees</h1>
 <table class="table">
     <thead>
@@ -12,14 +11,12 @@
             <th>Date of Birth</th>
             <th>Department</th>
             <th> </th>
-
         </tr>
     </thead>
     <tbody>
-        @foreach(var employee in Model)
+        @foreach (var employee in Model.Items)
         {
             <tr>
-
                 <td>@employee.Id</td>
                 <td>@employee.Name</td>
                 <td>@employee.Email</td>
@@ -30,6 +27,15 @@
             </tr>
         }
     </tbody>
-
-
 </table>
+
+<!-- Pagination -->
+<div class="pagination-container">
+    @if (Model.TotalPages > 1)
+    {
+        for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <a href="@Url.Action("Index", new { page = i })" class="@(i == Model.PageNumber ? "active" : "")">@i</a>
+        }
+    }
+</div>

@@ -37,10 +37,31 @@ namespace MVCCRUD.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public async Task <IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            var employees=await _mydbcontext.Employees.ToListAsync();
-            return View(employees);
+            const int pageSize = 1;
+            int pageNumber = page ?? 1;
+
+            var employees = await _mydbcontext.Employees.ToListAsync();
+
+            var paginatedEmployees = Paginate(employees, pageNumber, pageSize);
+
+            return View(paginatedEmployees);
+        }
+
+        private PaginationViewModel<Employee> Paginate(List<Employee> items, int pageNumber, int pageSize)
+        {
+            var paginatedItems = items.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+
+            var paginationViewModel = new PaginationViewModel<Employee>
+            {
+                Items = paginatedItems,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalItems = items.Count
+            };
+
+            return paginationViewModel;
         }
         [HttpGet]
         public async Task<IActionResult>View(Guid id)
