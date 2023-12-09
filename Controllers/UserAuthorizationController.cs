@@ -57,20 +57,21 @@ namespace MVCCRUD.Controllers
            
         }
         [Authorize]
-        public async Task logout()
+        public async Task<IActionResult> logout()
         {
             await _userAuthorizationService.LogoutAsync();
+            return RedirectToAction("Login", "UserAuthorization");
         }
         //public async Task<IActionResult> reg()
         //{
         //    var model = new Registration()
         //    {
         //        Username = "admin",
-        //        Name= "Max Wells",
-        //        Email="Max@gmail.com",
-        //        Password="Admin@12345"
+        //        Name = "Max Wells",
+        //        Email = "Max@gmail.com",
+        //        Password = "Admin@12345"
         //    };
-        //    model.Role = "user";
+        //    model.Role = "admin";
         //    var result = await _userAuthorizationService.RegistrationAsync(model);
         //    return Ok(result);
         //}

@@ -13,14 +13,16 @@
                 <a class="navbar-brand" href="#">WebSiteName</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="@Url.Action("Display", "Dashboard")">Dashboard</a></li>
+                <li><a asp-controller="Dashboard" asp-action="Display">Dashboard</a></li>
 
                 @if (User.IsInRole("admin"))
                 {
-                    <li><a href="@Url.Action("Display", "Admin")">Admin Page</a></li>
+                    <li><a asp-controller="Admin" asp-action="Display">Admin Page</a></li>
+                    <li><a asp-controller="Employee" asp-action="Add">Add Employee</a></li>
+                    <li><a asp-controller="Employee" asp-action="Index">Employee List</a></li>
                 }
 
-                <li><a href="@Url.Action("Logout", "UserAuthorization")">Logout</a></li>
+                <li><a asp-controller="UserAuthorization" asp-action="Logout">Logout</a></li>
             </ul>
         </div>
     </nav>

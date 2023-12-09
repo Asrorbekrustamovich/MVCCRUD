@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using MVCCRUD.Models.Authorizationmodels;
 using MVCCRUD.Models.Domain;
 using System.Security.Claims;
@@ -7,7 +8,8 @@ using System.Security.Claims;
 namespace MVCCRUD.Models.Service
 {
     public class UserAuthorizationService : IUserAuthorizationService
-    {private readonly SignInManager<ApplicationUser>_signInManager;
+    {
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
@@ -20,29 +22,29 @@ namespace MVCCRUD.Models.Service
 
         public async Task<Status> LoginAsync(LoginModel Model)
         {
-            var status=new Status();
-            var user= await _userManager.FindByNameAsync(Model.Username);
-            if(user==null)
+            var status = new Status();
+            var user = await _userManager.FindByNameAsync(Model.Username);
+            if (user == null)
             {
                 status.StatusCode = 0;
                 status.Message = "invalid username";
                 return status;
             }
-            if(! await _userManager.CheckPasswordAsync(user,Model.Password))
+            if (!await _userManager.CheckPasswordAsync(user, Model.Password))
             {
                 status.StatusCode = 0;
                 status.Message = "invalid Password";
                 return status;
             }
             var signinResult = await _signInManager.PasswordSignInAsync(user, Model.Password, false, true);
-            if(signinResult.Succeeded)
+            if (signinResult.Succeeded)
             {
                 var userroles = await _userManager.GetRolesAsync(user);
                 var authclaims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name,user.UserName)
                 };
-                foreach(var role in userroles)
+                foreach (var role in userroles)
                 {
                     authclaims.Add(new Claim(ClaimTypes.Role, role));
                 }
@@ -50,7 +52,7 @@ namespace MVCCRUD.Models.Service
                 status.Message = "logged successfully";
                 return status;
             }
-            else if(signinResult.IsLockedOut)
+            else if (signinResult.IsLockedOut)
             {
                 status.StatusCode = 0;
                 status.Message = "User locked out";
@@ -66,16 +68,16 @@ namespace MVCCRUD.Models.Service
 
         }
 
-        public async  Task LogoutAsync()
+        public async Task LogoutAsync()
         {
             _signInManager.SignOutAsync();
         }
 
-        public  async Task<Status> RegistrationAsync(Registration model)
+        public async Task<Status> RegistrationAsync(Registration model)
         {
-            var status=new Status();
+            var status = new Status();
             var userexists = await _userManager.FindByNameAsync(model.Username);
-            if(userexists != null)
+            if (userexists != null)
             {
                 status.StatusCode = 0;
                 status.Message = "User already exists";
@@ -89,20 +91,20 @@ namespace MVCCRUD.Models.Service
                 UserName = model.Username,
                 EmailConfirmed = true
             };
-            var result=await _userManager.CreateAsync(user, model.Password);
-            if(!result.Succeeded)
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (!result.Succeeded)
             {
-                status.StatusCode=0;
+                status.StatusCode = 0;
                 status.Message = "user creation is failed";
                 return status;
             }
-            if(!await _roleManager.RoleExistsAsync(model.Role))
+            if (!await _roleManager.RoleExistsAsync(model.Role))
             {
                 await _roleManager.CreateAsync(new IdentityRole(model.Role));
             }
-            if(await _roleManager.RoleExistsAsync(model.Role))
+            if (await _roleManager.RoleExistsAsync(model.Role))
             {
-                await _userManager.AddToRoleAsync(user,model.Role);
+                await _userManager.AddToRoleAsync(user, model.Role);
             }
             status.StatusCode = 1;
             status.Message = "User  successfully has been  registered";

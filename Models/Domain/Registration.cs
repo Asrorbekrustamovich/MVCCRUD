@@ -16,6 +16,6 @@ namespace MVCCRUD.Models.Domain
         [Compare("Password")]
         public string PasswordConfirm { get; set; }
         [Required]
-        public string? Role { get; set; }
+        public string Role { get; set; } = "user";
     }
 }
