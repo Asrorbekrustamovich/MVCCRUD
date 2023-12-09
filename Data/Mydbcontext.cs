@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MVCCRUD.Models.Domain;
 
 namespace MVCCRUD.Data
 {
-    public class Mydbcontext:DbContext
+    public class Mydbcontext:IdentityDbContext<ApplicationUser>
     {
         public Mydbcontext()
         {

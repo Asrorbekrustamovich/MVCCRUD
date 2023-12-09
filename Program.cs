@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MVCCRUD.Data;
+using MVCCRUD.Models.Domain;
+using MVCCRUD.Models.Service;
 
 namespace MVCCRUD
 {
@@ -12,6 +15,9 @@ namespace MVCCRUD
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<Mydbcontext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddIdentity<ApplicationUser,IdentityRole>().AddEntityFrameworkStores<Mydbcontext>().AddDefaultTokenProviders();
+            builder.Services.ConfigureApplicationCookie(op => op.LoginPath = "/UserAuthentcation/Login");
+            builder.Services.AddScoped<IUserAuthorizationService, UserAuthorizationService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -26,12 +32,12 @@ namespace MVCCRUD
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=UserAuthorization}/{action=Login}/{id?}");
 
             app.Run();
         }

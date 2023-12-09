@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MVCCRUD.Data;
+using MVCCRUD.Filters;
 using MVCCRUD.Models;
 using MVCCRUD.Models.Domain;
 
 namespace MVCCRUD.Controllers
 {
+    [CacheResourceFilter]
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly Mydbcontext _mydbcontext;
