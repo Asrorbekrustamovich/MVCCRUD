@@ -56,20 +56,20 @@
             <label asp-for="Username">Username</label>
             <input type="text" asp-for="Username"/>
             <div class="msg">
-                <span asp-validation-for="Username"></span>
+                <span class="err" asp-validation-for="Username"></span>
             </div>
             <label asp-for="Password">Password</label>
             <input type="password" asp-for="Password" />
             <div class="msg">
-                <span asp-validation-for="Username"></span>
+                <span class="err" asp-validation-for="Username"></span>
             </div>
             @if(TempData["msg"]!=null)
             {
                 <div class="msg">
-                    @TempData["msg"]
+                    <span class="err"> @TempData["msg"]</span>
                 </div>
             }
-            <input type="submit" value="Login"/>
+            <button type="submit">Login</button>
             <a href="/UserAuthorization/Registration"> Not user!click here to sign up</a>
         </div>
         </form>

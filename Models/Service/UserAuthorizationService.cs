@@ -46,7 +46,7 @@ namespace MVCCRUD.Models.Service
                 {
                     authclaims.Add(new Claim(ClaimTypes.Role, role));
                 }
-                status.StatusCode = 0;
+                status.StatusCode = 1;
                 status.Message = "logged successfully";
                 return status;
             }
