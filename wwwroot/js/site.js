@@ -1,4 +1,11 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿// site.js
 
-// Write your JavaScript code.
+// Function to toggle the sidebar visibility
+function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('sidebar-hidden');
+}
+
+// Event listener for a button or link that toggles the sidebar
+const toggleSidebarButton = document.querySelector('#toggle-sidebar-button');
+toggleSidebarButton.addEventListener('click', toggleSidebar);

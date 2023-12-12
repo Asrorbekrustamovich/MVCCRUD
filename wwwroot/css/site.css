@@ -1,57 +1,86 @@
-:root {
-    --primary-color: #007bff;
-}
-
-html {
-    font-size: 14px;
-}
-
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
-
-.btn:focus,
-.btn:active:focus,
-.btn-link.nav-link:focus,
-.form-control:focus,
-.form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--primary-color);
-}
-
-html {
-    position: relative;
-    min-height: 100%;
-}
-
+/* Global styles */
 body {
-    margin-bottom: 60px;
+    padding-top: 50px;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
 }
 
+/* Sidebar styles */
+.sidebar {
+    height: 100%;
+    width: 220px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111; /* Dark background color */
+    padding-top: 60px;
+    color: #fff; /* Text color */
+    overflow-y: auto; /* Allow scrolling if content exceeds sidebar height */
+    transition: all 0.5s ease-in-out;
+}
+
+    /* Common styles for links in the sidebar and main content area */
+    .sidebar a,
+    .pagination-container a {
+        padding: 15px;
+        text-decoration: none;
+        font-size: 18px;
+        color: #818181;
+        display: block;
+        transition: color 0.3s;
+    }
+
+        .sidebar a:hover,
+        .pagination-container a:hover {
+            color: #f1f1f1;
+        }
+
+/* Pagination styles */
 .pagination-container {
     margin-top: 20px;
-    text-align: center;
 }
 
     .pagination-container a {
         display: inline-block;
-        padding: 8px 16px;
+        padding: 8px 12px;
+        margin-right: 5px;
+        border: 1px solid #ddd;
         text-decoration: none;
-        color: var(--primary-color);
-        border: 1px solid var(--primary-color);
-        margin: 0 4px;
-        border-radius: 4px;
+        color: #333;
         transition: background-color 0.3s;
     }
 
         .pagination-container a:hover {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: #f2f2f2;
         }
 
         .pagination-container a.active {
-            background-color: var(--primary-color);
-            color: white;
-            cursor: default;
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #007bff;
+        }
+
+/* Profile board styles */
+.sidebar .profile-board {
+    display: none;
+    margin-top: 20px;
+}
+
+.sidebar.admin .profile-board {
+    display: block;
+}
+
+    .sidebar.admin .profile-board a {
+        padding: 15px;
+        text-decoration: none;
+        font-size: 18px;
+        color: #818181;
+        display: block;
+        transition: color 0.3s;
+    }
+
+        .sidebar.admin .profile-board a:hover {
+            color: #f1f1f1;
         }

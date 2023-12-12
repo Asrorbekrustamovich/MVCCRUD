@@ -1,28 +1,32 @@
 ﻿@model MVCCRUD.Models.AddEmployeeViewModel
-@{
-}
+<link rel="stylesheet" href="~/css/styles.css" />
 <h1>Add Employee</h1>
-<form method="post" action="Add" class="mt-5">
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Name</label>
-        <input type="text" class="form-control" asp-for="Name" >
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email Address</label>
-        <input type="email" class="form-control" asp-for="Email">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Salary</label>
-        <input type="number" class="form-control" asp-for="Salary">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Date Of Birth</label>
-        <input type="date" class="form-control" asp-for="DateofBirth">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Department</label>
-        <input type="text" class="form-control" asp-for="Department">
-    </div>
-    
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="container">
+    <form method="post" action="Add" class="mt-5 form-container">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input type="text" class="form-control" asp-for="Name" />
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email Address</label>
+            <input type="email" class="form-control" asp-for="Email" />
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Salary</label>
+            <input type="number" class="form-control" asp-for="Salary" />
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Date Of Birth</label>
+            <input type="date" class="form-control" asp-for="DateofBirth" />
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Department</label>
+            <input type="text" class="form-control" asp-for="Department" />
+        </div>
+
+        <!-- Display the image -->
+        @* <img src="~/css/office.jpg" alt="Office Image" class="img-fluid mb-3" /> *@
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

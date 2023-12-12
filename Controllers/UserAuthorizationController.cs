@@ -29,7 +29,7 @@ namespace MVCCRUD.Controllers
             model.Role = "user";
             var result=await _userAuthorizationService.RegistrationAsync(model);
             TempData["msg"] = result.Message;
-            return RedirectToAction(nameof(Registration));
+            return RedirectToAction(nameof(Login));
             
         }
 

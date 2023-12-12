@@ -1,0 +1,49 @@
+﻿@model MVCCRUD.Models.Domain.Registration
+
+@{
+    ViewData["Title"] = "User Registration";
+    Layout = "_Layout";
+}
+
+<h2>User Registration</h2>
+
+@if (!string.IsNullOrEmpty(TempData["msg"] as string))
+{
+    <div class="alert alert-info" role="alert">
+        @TempData["msg"]
+    </div>
+}
+
+<form asp-controller="UserAuthorization" asp-action="Registration" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Username"></label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PasswordConfirm"></label>
+        <input asp-for="PasswordConfirm" type="password" class="form-control" />
+        <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
