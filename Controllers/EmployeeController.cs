@@ -50,7 +50,7 @@ namespace MVCCRUD.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(int? page)
         {
-            const int pageSize = 1;
+            const int pageSize = 5;
             int pageNumber = page ?? 1;
 
             var employees = await _myDbContext.Employees.ToListAsync();
@@ -129,5 +129,6 @@ namespace MVCCRUD.Controllers
 
             return paginationViewModel;
         }
+
     }
 }

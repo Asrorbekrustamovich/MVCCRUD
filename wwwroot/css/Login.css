@@ -1,0 +1,82 @@
+﻿/* Reset margin and padding for the body */
+.main {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    background-color: #f0f0f0; /* Light background color */
+}
+
+/* Form Container Styling */
+.container {
+    width: 600px; /* Limit the width of the container */
+    padding: 20px; /* Add some padding */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #fff; /* White background color */
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 15px; /* Space between form groups */
+}
+
+.form-control {
+    width: 100%; /* Full width of the container */
+    padding: 10px; /* Add padding inside inputs */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Labels */
+label {
+    display: block; /* Labels on their own line */
+    margin-bottom: 5px; /* Space below label */
+    font-weight: bold; /* Bold labels */
+}
+.title{
+    text-align: center;
+}
+/* Error Messages */
+.err {
+    color: #e74c3c; /* Red color for errors */
+    font-size: 0.9em; /* Slightly smaller font size */
+    display: block; /* Show errors on their own line */
+    margin-top: 5px; /* Space above error message */
+}
+
+/* Submit Button */
+.btn-primary {
+    background-color: #3498db; /* Blue color */
+    color: white; /* White text color */
+    padding: 10px 15px; /* Add padding */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    display: block; /* Display as block */
+    width: 100%; /* Full width of the container */
+    margin-top: 20px; /* Space above the button */
+}
+
+    /* Submit Button Hover State */
+    .btn-primary:hover {
+        background-color: #2980b9; /* Darker blue on hover */
+    }
+
+/* Navigation Link */
+a {
+    display: block; /* Display as block */
+    margin-top: 10px; /* Space above the link */
+    color: #3498db; /* Blue color */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+}
+
+    /* Navigation Link Hover State */
+    a:hover {
+        color: #2980b9; /* Darker blue on hover */
+    }

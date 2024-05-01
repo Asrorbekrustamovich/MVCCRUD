@@ -1,7 +1,13 @@
 /* Global styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     padding-top: 50px;
     margin: 0;
+    padding-left : 100px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa;
 }
@@ -9,33 +15,53 @@ body {
 /* Sidebar styles */
 .sidebar {
     height: 100%;
-    width: 220px;
+    width: 200px;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111; /* Dark background color */
+    background-color: #0929e0; /* Dark background color */
     padding-top: 60px;
-    color: #fff; /* Text color */
+    color: #ebeff2; /* Text color */
     overflow-y: auto; /* Allow scrolling if content exceeds sidebar height */
     transition: all 0.5s ease-in-out;
 }
-
-    /* Common styles for links in the sidebar and main content area */
-    .sidebar a,
-    .pagination-container a {
-        padding: 15px;
-        text-decoration: none;
-        font-size: 18px;
-        color: #818181;
-        display: block;
-        transition: color 0.3s;
+    .sidebar img {
+        padding : 5px;
+        border-radius: 50%;
+        width: 30px; /* Adjust the width as needed */
+        height: 30px; /* Adjust the height as needed */
+        margin-right: 8px; /* Add some space to the right of the image */
+        vertical-align: middle;
+        background-color: #ffffff;/* Align the image vertically in the middle */
     }
 
-        .sidebar a:hover,
-        .pagination-container a:hover {
-            color: #f1f1f1;
-        }
+/* Flex container for sidebar links */
+.sidebar-links {
+    display: flex;
+    align-items: center;
+}
+
+/* Common styles for links in the sidebar and main content area */
+.sidebar a,
+.pagination-container a {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: color 0.3s;
+}
+
+    .sidebar a i,
+    .pagination-container a i {
+        margin-right: 10px;
+    }
+
+    .sidebar a:hover,
+    .pagination-container a:hover {
+        color: #f1f1f1;
+    }
 
 /* Pagination styles */
 .pagination-container {
@@ -84,3 +110,12 @@ body {
         .sidebar.admin .profile-board a:hover {
             color: #f1f1f1;
         }
+.table a{
+    padding: 5px;
+    border-radius: 7px;
+    background-color: red;
+}
+.table img {
+    width: 30px;
+    height: 30px;
+}

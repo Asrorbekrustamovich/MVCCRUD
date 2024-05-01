@@ -1,7 +1,7 @@
 ﻿@model MVCCRUD.Models.PaginationViewModel<MVCCRUD.Models.Domain.Employee>
 <link rel="stylesheet" href="~/css/site.css" />
 <h1>Employees</h1>
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>Id</th>
@@ -10,7 +10,7 @@
             <th>Salary</th>
             <th>Date of Birth</th>
             <th>Department</th>
-            <th> </th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -24,7 +24,7 @@
                 <td>@employee.Salary</td>
                 <td>@employee.DateofBirth.ToString("dd-MM-yyyy")</td>
                 <td>@employee.Department</td>
-                <td><a asp-controller="Employee" asp-action="View" asp-route-id="@employee.Id">View</a></td>
+                <td><a class="icon" asp-controller="Employee" asp-action="View" asp-route-id="@employee.Id"><img src="~/images/edit-pencil-line-02-svgrepo-com.svg" /></a></td>
             </tr>
             }
     </tbody>
@@ -32,7 +32,7 @@
 
 <!-- Pagination -->
 <div class="pagination-container">
-    @if (Model.TotalPages > 1)
+    @if (Model.TotalPages>1)
     {
         for (int i = 1; i <= Model.TotalPages; i++)
         {

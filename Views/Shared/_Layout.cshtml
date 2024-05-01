@@ -6,33 +6,39 @@
     <title>Auth Project</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.css" />
-
-    <script src="site.js"></script>
 </head>
-<body>
-    <div class="sidebar @if (User.IsInRole("admin")) {
-    <text>admin</text>
- }">
+<body >
+    <div class="sidebar @(User.IsInRole("admin") ? "admin" : "")">
         @if (User.IsInRole("admin"))
         {
-            <a asp-controller="Admin" asp-action="Display">Admin Page</a>
-            <a asp-controller="Employee" asp-action="Add">Add Employee</a>
-            <a asp-controller="Employee" asp-action="Index">Employee List</a>
-
+            <a asp-controller="Admin" asp-action="Display"><img src="~/images/admin-users-svgrepo-com.svg" />Admin Page</a>
+            <a asp-controller="Employee" asp-action="Add"><img src="~/images/add-profile-svgrepo-com.svg" />Add Employee</a>
+            <a asp-controller="Employee" asp-action="Index"><img src="~/images/user-list-bold-svgrepo-com.svg" />Employee List</a>
+            <a asp-controller="UserAuthorization" asp-action="Logout"><img src="~/images/logout-svgrepo-com.svg" />Logout</a>
+            <a asp-controller="Dashboard" asp-action="Display"><img src="~/images/dashboard-svgrepo-com.svg" />Dashboard</a>
             @* <div class="profile-board">
-                <a asp-controller="Admin" asp-action="Profile">Admin Profile</a>
-            </div> *@
+        <a asp-controller="Admin" asp-action="Profile">Admin Profile</a>
+        </div> *@
         }
-
-        @if (User.Identity.IsAuthenticated)
+        @if (User.Identity.IsAuthenticated&&!User.IsInRole("admin"))
         {
-            <a asp-controller="Dashboard" asp-action="Display">Dashboard</a>
-            <a asp-controller="UserAuthorization" asp-action="Logout">Logout</a>
-        }
-    </div>
 
+            <a asp-controller="UserAuthorization" asp-action="Logout"><img src="~/images/logout-svgrepo-com.svg" />Logout</a>
+            <a asp-controller="Dashboard" asp-action="Display"><img src="~/images/dashboard-svgrepo-com.svg" />Dashboard</a>
+            <a asp-controller="Employee" asp-action="Index"><img src="~/images/user-list-bold-svgrepo-com.svg" />Employee List</a>
+        }
+        @if (!User.Identity.IsAuthenticated)
+        {
+
+
+            <a asp-controller="UserAuthorization" asp-action="Logout"><img src="~/images/logout-svgrepo-com.svg" />Logout</a>
+        }
+       
+    </div>
     <div class="container">
         @RenderBody()
     </div>
 </body>
 </html>
+
+

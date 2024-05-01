@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MVCCRUD.Controllers
 {
-    [Authorize]
+    
     public class DashboardController : Controller
     {
         public IActionResult Display()

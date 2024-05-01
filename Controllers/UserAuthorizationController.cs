@@ -13,6 +13,9 @@ namespace MVCCRUD.Controllers
        
         public UserAuthorizationController(IUserAuthorizationService userAuthorizationService)
         {
+
+
+
             _userAuthorizationService = userAuthorizationService;
         }
         public IActionResult Registration()
@@ -56,7 +59,7 @@ namespace MVCCRUD.Controllers
             }
            
         }
-        [Authorize]
+       
         public async Task<IActionResult> logout()
         {
             await _userAuthorizationService.LogoutAsync();
