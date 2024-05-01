@@ -13,6 +13,8 @@ namespace MVCCRUD.Models.Domain
         [Required]
         public string Password { get; set; }
         [Required]
+        public string Surname { get; set; }
+        [Required]
         [Compare("Password")]
         public string PasswordConfirm { get; set; }
         [Required]
